@@ -7,13 +7,14 @@
 
 .header__left {
     display: flex;
-    padding-left: 13px;
+    padding-left: 18px;
     align-items: center;
     justify-content: left;
 }
 
-.header__left > * {
-    padding-left: 11px;
+.header__left > .MuiSvgIcon-root {
+    padding: 6px;
+    margin-right: 5px;
 }
 
 .header__middle {
