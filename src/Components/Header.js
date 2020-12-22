@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
+import { useMediaQuery } from 'react-responsive';
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 import AppsIcon from '@material-ui/icons/Apps';
+import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 import MenuIcon from '@material-ui/icons/Menu';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
 import SearchIcon from '@material-ui/icons/Search';
@@ -10,6 +12,7 @@ import "./../StyleSheets/Header.css"
 function Header() {
     const [search, setSearch] = useState("")
     const [searchActive, setSearchActive] = useState(false)
+    const mediaQuery = useMediaQuery({ query: '(max-width: 657px)' })
 
     const handleSearch = (e) => {
         e.preventDefault();
@@ -28,6 +31,9 @@ function Header() {
     const renderMiddle = () => {
         return (
             <div className="header__middle">
+                <div className={mediaQuery ? "middle__visible" : "middle__hidden"} onClick={() => setSearchActive(false)}>
+                    <ArrowBackIcon/>
+                </div>
                 <form className="middle__form" onSubmit={handleSearch}>
                     <input className="middle__input" type="text" placeholder="Search" value={search} onChange={(e) => setSearch(e.target.value)}></input>
                     <button className="middle__button" type="submit">
@@ -41,7 +47,7 @@ function Header() {
     const renderRight = () => {
         return (
             <div className="header__right">
-                <div className="right__hidden">
+                <div className={mediaQuery ? "right__visible" : "right__hidden"} onClick={() => setSearchActive(true)}>
                     <SearchIcon/>
                 </div>
                 <div className="right__icons">
@@ -59,9 +65,9 @@ function Header() {
 
     return (
         <div className="header">
-            {!searchActive && renderLeft()}
-            {renderMiddle()}
-            {!searchActive && renderRight()}
+            {(!searchActive || !mediaQuery) && renderLeft()}
+            {(searchActive || !mediaQuery) && renderMiddle()}
+            {(!searchActive || !mediaQuery) && renderRight()}
         </div>
     )
 }
