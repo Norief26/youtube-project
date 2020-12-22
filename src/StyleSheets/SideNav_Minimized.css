@@ -1,0 +1,34 @@
+.sideNav_minimized {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 72px;
+    align-items: center;
+    background-color: #202020;
+}
+
+.sideNav_minimized > * > .MuiSvgIcon-root {
+    margin-bottom: 6px;
+    color: inherit;
+}
+
+.sideNav_minimized > *:hover {
+    background-color: #303030;
+}
+
+.sideNav__active, .sideNav__inactive {
+    display: flex;
+    flex-direction: column;
+    width: inherit;
+    padding-top: 18px;
+    padding-bottom: 18px;
+    font-size: 10px;
+    cursor: pointer;
+    align-items: center;
+    justify-content: center;
+    color: #909090;
+}
+
+.sideNav__active {
+    color: #FFFFFF;
+}

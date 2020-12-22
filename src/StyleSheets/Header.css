@@ -5,6 +5,10 @@
     justify-content: space-between;
 }
 
+.header > * {
+    cursor: pointer;
+}
+
 .header__left {
     display: flex;
     padding-left: 18px;
@@ -55,6 +59,7 @@
 .middle__button {
     height: inherit;
     width: 64px;
+    cursor: inherit;
     background-color: #323232;
     border: none;
 }
@@ -108,7 +113,11 @@
 
 .right__visible {
     display: flex;
-    padding-right: 14px;
+}
+
+.right__visible > .MuiSvgIcon-root {
+    padding: 6px;
+    margin: 4px;
 }
 
 .right__hidden  {

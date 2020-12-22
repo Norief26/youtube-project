@@ -1,0 +1,15 @@
+.App {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.app__content {
+    display: flex;
+    height: inherit;
+}
+
+#root {
+    height: 100vh;
+}
+  

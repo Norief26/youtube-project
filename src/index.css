@@ -3,7 +3,7 @@ body {
   font-family: 'Roboto','Noto',sans-serif !important;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  overflow-y:scroll;
+  overflow-y:auto;
 }
 
 code {
