@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 import AppsIcon from '@material-ui/icons/Apps';
 import MenuIcon from '@material-ui/icons/Menu';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
@@ -8,35 +9,59 @@ import "./../StyleSheets/Header.css"
 
 function Header() {
     const [search, setSearch] = useState("")
+    const [searchActive, setSearchActive] = useState(false)
 
     const handleSearch = (e) => {
         e.preventDefault();
         console.log("Search Button Clicked")
     }
 
-    return (
-        <div className="header">
-
+    const renderLeft = () => {
+        return (
             <div className="header__left">
                 <MenuIcon/>
-                {/* <img className="logo" src="https://logos-world.net/wp-content/uploads/2020/04/YouTube-Logo.png" alt=""></img> */}
+                <img className="logo" src="https://i.ibb.co/QHNKTmP/Untitled.png" alt=""></img>
             </div>
+        )
+    }
 
+    const renderMiddle = () => {
+        return (
             <div className="header__middle">
-                <form className="search" onSubmit={handleSearch}>
-                    <input className="search__field" type="text" placeholder="Search" value={search} onChange={(e) => setSearch(e.target.value)}></input>
-                    <button className="search__button" type="submit">
+                <form className="middle__form" onSubmit={handleSearch}>
+                    <input className="middle__input" type="text" placeholder="Search" value={search} onChange={(e) => setSearch(e.target.value)}></input>
+                    <button className="middle__button" type="submit">
                         <SearchIcon type="submit"/>
                     </button>
                 </form>
             </div>
+        )
+    }
 
+    const renderRight = () => {
+        return (
             <div className="header__right">
-                <AppsIcon/>
-                <VideoCallIcon/>
-                <MoreVertIcon/>
+                <div className="right__hidden">
+                    <SearchIcon/>
+                </div>
+                <div className="right__icons">
+                    <AppsIcon/>
+                    <VideoCallIcon/>
+                    <MoreVertIcon/>
+                </div>
+                <div className='right__signin'>
+                    <AccountCircleIcon/>
+                    <span>SIGN IN</span>
+                </div>
             </div>
+        )
+    }
 
+    return (
+        <div className="header">
+            {!searchActive && renderLeft()}
+            {renderMiddle()}
+            {!searchActive && renderRight()}
         </div>
     )
 }
