@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useMediaQuery } from 'react-responsive';
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 import AppsIcon from '@material-ui/icons/Apps';
+import { ButtonBase } from '@material-ui/core'
 import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 import MenuIcon from '@material-ui/icons/Menu';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
@@ -22,7 +23,9 @@ function Header() {
     const renderLeft = () => {
         return (
             <div className="header__left">
-                <MenuIcon/>
+                <ButtonBase centerRipple={true}>
+                    <MenuIcon/>
+                </ButtonBase>
                 <img className="logo" src="https://i.ibb.co/QHNKTmP/Untitled.png" alt=""></img>
             </div>
         )
@@ -32,7 +35,9 @@ function Header() {
         return (
             <div className="header__middle">
                 <div className={mediaQuery ? "middle__visible" : "middle__hidden"} onClick={() => setSearchActive(false)}>
-                    <ArrowBackIcon/>
+                    <ButtonBase centerRipple={true}>
+                        <ArrowBackIcon/>
+                    </ButtonBase>
                 </div>
                 <form className="middle__form" onSubmit={handleSearch}>
                     <input className="middle__input" type="text" placeholder="Search" value={search} onChange={(e) => setSearch(e.target.value)}></input>
@@ -51,9 +56,15 @@ function Header() {
                     <SearchIcon/>
                 </div>
                 <div className="right__icons">
-                    <AppsIcon/>
-                    <VideoCallIcon/>
-                    <MoreVertIcon/>
+                    <ButtonBase centerRipple={true}>
+                        <AppsIcon/>
+                    </ButtonBase>
+                    <ButtonBase centerRipple={true}>
+                        <VideoCallIcon/>
+                    </ButtonBase>
+                    <ButtonBase centerRipple={true}>
+                        <MoreVertIcon/>
+                    </ButtonBase>
                 </div>
                 <div className='right__signin'>
                     <AccountCircleIcon/>

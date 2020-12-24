@@ -11,7 +11,7 @@
 
 .header__left {
     display: flex;
-    padding-left: 18px;
+    padding-left: 16px;
     align-items: center;
     justify-content: left;
 }
@@ -132,32 +132,15 @@
     color: #FFFFFF;
 }
 
-.header__left > .MuiSvgIcon-root:active {
-    -webkit-transition: background-color 150ms ease-in;
-    -moz-transition: background-color 150ms ease-in;
-    -o-transition: background-color 150ms ease-in;
-    transition: background-color 150ms ease-in;
-    border-radius: 50px;
-    -webkit-border-radius: 50px;
-    background-color: #414141;
+.MuiButtonBase-root {
+    min-height: 40px !important;
+    min-width: 40px !important;
+    max-height: 40px !important;
+    max-width: 40px !important;
+    border-radius: 50px !important;
+    margin-right: 3px !important;
 }
 
-.right__icons > .MuiSvgIcon-root:active {
-    -webkit-transition: background-color 150ms ease-in;
-    -moz-transition: background-color 150ms ease-in;
-    -o-transition: background-color 150ms ease-in;
-    transition: background-color 150ms ease-in;
-    border-radius: 50px;
-    -webkit-border-radius: 50px;
-    background-color: #414141;
-}
-
-.right__visible > .MuiSvgIcon-root:active {
-    -webkit-transition: background-color 150ms ease-in;
-    -moz-transition: background-color 150ms ease-in;
-    -o-transition: background-color 150ms ease-in;
-    transition: background-color 150ms ease-in;
-    border-radius: 50px;
-    -webkit-border-radius: 50px;
-    background-color: #414141;
+.MuiTouchRipple-rippleVisible {
+    color: #acacac;
 }
