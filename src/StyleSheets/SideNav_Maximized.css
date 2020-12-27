@@ -1,0 +1,80 @@
+.sideNav_maximized {
+    background-color: #202020;
+    width: 240px;
+}
+
+.sideNav__header {
+    display: flex;
+    align-items: center;
+    padding-left: 16px;
+}
+
+.sideNav__section {
+    display: flex;
+    flex-direction: column;
+    padding-top: 9px;
+    padding-bottom: 9px;
+    color: #FFFFFF;
+    border-bottom: 1px solid #383838;
+}
+
+.section__itemInactive {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    font-size: 15px;
+    padding: 8px 0px 8px 24px;
+}
+
+.section__itemInactive > .MuiSvgIcon-root {
+    padding-right: 24px;
+    color: #858585;
+}
+
+.section__itemInactive:hover {
+    background-color: #303030;
+}
+
+.section__itemActive {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    font-size: 15px;
+    padding: 8px 0px 8px 24px;
+    background-color: #383838;
+}
+
+.section__itemActive > .MuiSvgIcon-root {
+    padding-right: 24px;
+    color: #FFFFFF;
+}
+
+.section__itemActive:hover {
+    background-color: #4C4C4C;
+}
+
+.signin__button {
+    display: flex;
+    margin: 8px 0px 8px 35px;
+    font-size: 14px;
+    font-weight: 600;
+    width: 95px;
+    align-items: center;
+    padding: 5px 0px 5px 8px;
+    color: #3B9AEB;
+    border-radius: 3px;
+    border: 1px solid #3B9AEB;
+}
+
+.signin__button > .MuiSvgIcon-root {
+    padding-right: 7px !important;
+    color: #3B9AEB;
+}
+
+.signin__text {
+    padding: 5px 35px 5px 35px;
+    margin: 0;
+    font-size: 13px;
+    font-weight: 600;
+    line-height: 20px;
+}
