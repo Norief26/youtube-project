@@ -10,7 +10,7 @@ import SearchIcon from '@material-ui/icons/Search';
 import VideoCallIcon from '@material-ui/icons/VideoCall';
 import "./../StyleSheets/Header.css"
 
-function Header() {
+function Header({handleSideNav}) {
     const [search, setSearch] = useState("")
     const [searchActive, setSearchActive] = useState(false)
     const mediaQuery = useMediaQuery({ query: '(max-width: 657px)' })
@@ -23,7 +23,7 @@ function Header() {
     const renderLeft = () => {
         return (
             <div className="header__left">
-                <ButtonBase centerRipple={true}>
+                <ButtonBase centerRipple={true} onClick={handleSideNav}>
                     <MenuIcon/>
                 </ButtonBase>
                 <img className="logo" src="https://i.ibb.co/QHNKTmP/Untitled.png" alt=""></img>

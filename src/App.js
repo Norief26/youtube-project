@@ -1,25 +1,30 @@
-import React, { useState } from 'react'
+import React, { useState } from 'react';
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom"
 import Header from "./Components/Header"
-// import SideNavMinimized from "./Components/SideNav_Minimized"
+import SideNavMinimized from "./Components/SideNav_Minimized"
 import SideNavMaximized from "./Components/SideNav_Maximized"
 import './App.css';
 
 function App() {
-    const [sideNavPath, setSideNavPath] = useState('HOME')
+    const [openSideNav, setSideNav] = useState(true)
 
-    const handleSideNavPath = (navPath) => {
-        setSideNavPath(navPath)
+    const handleSideNav = () => {
+        setSideNav(!openSideNav)
     }
 
     return (
-        <div className="App">
-            <Header/>
-            <div className="app__content">
-                {/* <SideNavMinimized navPath={sideNavPath} handleSideNavPath={handleSideNavPath}/> */}
-                <SideNavMaximized navPath={sideNavPath} handleSideNavPath={handleSideNavPath}/>
-                <p style={{padding: '20px'}}>{sideNavPath}</p>
+        <Router>
+            <div className="App">
+                <Header handleSideNav={handleSideNav}/>
+                <Switch>
+                    <Route path="/">
+                        <div className="app__content">
+                            {openSideNav ? <SideNavMaximized/> : <SideNavMinimized/>}
+                        </div>
+                    </Route>
+                </Switch>
             </div>
-        </div>
+        </Router>
     );
 }
 

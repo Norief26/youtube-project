@@ -1,0 +1,64 @@
+.row__minimized {
+    display: flex;
+    flex-direction: column;
+    padding-top: 18px;
+    padding-bottom: 18px;
+    font-size: 10px;
+    cursor: pointer;
+    align-items: center;
+    color: #909090;
+}
+
+.row__minimized > .MuiSvgIcon-root {
+    margin-bottom: 6px;
+    color: inherit;
+}
+
+.row__minimized:hover {
+    background-color: #303030;
+}
+
+.row__minimized.selected {
+    color: #ffffff;
+}
+
+.row__maximized {
+    display: flex;
+    z-index: 100;
+    align-items: center;
+    cursor: pointer;
+    font-size: 15px;
+    padding: 8px 0px 8px 24px;
+    color: #ffffff;
+}
+
+.row__maximized > .MuiSvgIcon-root {
+    padding-right: 24px;
+    color: #858585;
+}
+
+.row__maximized:hover {
+    background-color: #303030;
+}
+
+.row__maximized.selected {
+    background-color: #383838;
+}
+
+.row__maximized.selected > .MuiSvgIcon-root {
+    color: #ffffff;
+}
+
+.row__maximized.selected:hover {
+    background-color: #4C4C4C;
+}
+
+.row__maximized.outline >.MuiSvgIcon-root {
+    height: 16px;
+    width: 16px;
+    padding: 3px;
+    margin-right: 24px;
+    color: #ffffff;
+    border-radius: 100px;
+    background-color: #444444;
+}

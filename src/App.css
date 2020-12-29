@@ -13,3 +13,7 @@
 #root {
     height: 100vh;
 }
+
+.link {
+    text-decoration: none;
+}
