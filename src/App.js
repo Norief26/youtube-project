@@ -1,5 +1,7 @@
-import React, { useState } from 'react';
+import React from 'react';
+import { useSelector } from 'react-redux'
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom"
+import { selectSideNav } from './Redux/preferencesSlice'
 import Header from "./Components/Header"
 import Home from "./Components/Home"
 import SideNavMinimized from "./Components/SideNav_Minimized"
@@ -8,21 +10,12 @@ import Watch from "./Components/Watch"
 import './App.css';
 
 function App() {
-    const [sideNav, setSideNav] = useState(false)
-    const [modalNav, setModalNav] = useState(false)
-
-    const toggleSideNav = () => {
-        setSideNav(!sideNav)
-    }
-
-    const toggleModalNav = () => {
-        setModalNav(!modalNav)
-    }
+    const sideNav = useSelector(selectSideNav)
 
     return (
         <Router>
             <div className="App">
-                <Header toggleSideNav={toggleSideNav} toggleModalNav={toggleModalNav}/>
+                <Header/>
                 <div className="app__content">
 
                     {
@@ -33,7 +26,7 @@ function App() {
 
                     <Switch>
                         <Route path="/watch">
-                            <Watch modalNav={modalNav} toggleModalNav={toggleModalNav}/>
+                            <Watch/>
                         </Route>
                         <Route path="/" component={sideNav ? SideNavMinimized : SideNavMaximized}/>
                     </Switch>

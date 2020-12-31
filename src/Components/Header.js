@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
 import { Link, useLocation } from "react-router-dom";
 import { useMediaQuery } from 'react-responsive';
 import { ButtonBase } from '@material-ui/core'
+import { toggleModalNav, toggleSideNav } from './../Redux/preferencesSlice'
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 import AppsIcon from '@material-ui/icons/Apps';
 import ArrowBackIcon from '@material-ui/icons/ArrowBack';
@@ -11,7 +13,8 @@ import SearchIcon from '@material-ui/icons/Search';
 import VideoCallIcon from '@material-ui/icons/VideoCall';
 import "./../StyleSheets/Header.css"
 
-function Header({toggleSideNav, toggleModalNav}) {
+function Header() {
+    const dispatch = useDispatch()
     const [search, setSearch] = useState("")
     const [searchActive, setSearchActive] = useState(false)
     const location = useLocation()
@@ -25,7 +28,7 @@ function Header({toggleSideNav, toggleModalNav}) {
     const renderLeft = () => {
         return (
             <div className="header__left">
-                <ButtonBase centerRipple={true} onClick={location.pathname === '/watch' ? toggleModalNav : toggleSideNav}>
+                <ButtonBase centerRipple={true} onClick={location.pathname === '/watch' ? () => {dispatch(toggleModalNav())} : () => {dispatch(toggleSideNav())}}>
                     <MenuIcon/>
                 </ButtonBase>
 
