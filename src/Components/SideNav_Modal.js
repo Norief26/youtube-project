@@ -6,7 +6,6 @@ import { ButtonBase } from '@material-ui/core'
 import MenuIcon from '@material-ui/icons/Menu';
 import Modal from 'react-modal';
 import SideNavMaximized from './SideNav_Maximized'
-import './../StyleSheets/Watch.css'
 import './../StyleSheets/SideNav_Modal.css'
 
 function SideNav_Modal() {

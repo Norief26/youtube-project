@@ -1,5 +1,39 @@
-.Home {
+.home {
     display: flex;
-    max-width: 2256px;
+    flex-direction: column;
+    padding-left: 16px;
+    padding-right: 16px;
+    width: 100%;
+    overflow: auto;
+}
+
+.home__section, .home__highlights {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 0.8fr));
+    gap: 30px 30px;
+    padding-top: 30px;
+    padding-bottom: 45px;
+    width: inherit;
+    max-width: min(100%,2256px);
     flex-wrap: wrap;
+    justify-content: center;
+}
+
+.home__highlights {
+    display: flex;
+    text-align: left;
+    color: #FFFFFF;
+    border-top: 3px solid #303030;
+    border-bottom: 3px solid #303030;
+}
+
+.home__header {
+    padding-left: 16px;
+    width: 100%;
+}
+
+.home__header > span {
+    font-size: 18px;
+    font-weight: 600;
+    margin: 0;
 }

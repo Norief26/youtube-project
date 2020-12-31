@@ -25,13 +25,11 @@
     transform: translateX(-240px);
 }
 
-.ReactModal__Content:hover {
-    overflow-y: scroll !important;
-}
-
 .modal__header {
     display: flex;
-    align-content: center !important;
+    position: relative;
+    z-index: 1;
+    top: 0;
     padding-left: 16px;
     height: 56px;
 }

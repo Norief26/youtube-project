@@ -4,15 +4,44 @@ import './../StyleSheets/Home.css'
 
 function Home() {
     return (
-        <div className="Home">
-            <VideoCard/>
-            <VideoCard/>
-            <VideoCard/>
-            <VideoCard/>
-            <VideoCard/>
-            <VideoCard/>
-            <VideoCard/>
+        <div className="home">
+            <div className='home__section'>
+                <VideoCard/>
+                <VideoCard/>
+                <VideoCard/>
+                <VideoCard/>
+                <VideoCard/>
+                <VideoCard/>
+                <VideoCard/>
+                <VideoCard/>
+            </div>
 
+            <div className='home__highlights'>
+                <div className='home__header'>
+                    <span>BREAKING NEWS</span>
+                </div>
+                <div className='home__section'>
+                    <VideoCard/>
+                    <VideoCard/>
+                    <VideoCard/>
+                    <VideoCard/>
+                    <VideoCard/>
+                    <VideoCard/>
+                    <VideoCard/>
+                    <VideoCard/>
+                </div>
+            </div>
+
+            <div className='home__section'>
+                <VideoCard/>
+                <VideoCard/>
+                <VideoCard/>
+                <VideoCard/>
+                <VideoCard/>
+                <VideoCard/>
+                <VideoCard/>
+                <VideoCard/>
+            </div>
         </div>
     )
 }

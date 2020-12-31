@@ -8,7 +8,7 @@ function VideoCard() {
         <div className="VideoCard">
             <Link to='/watch'>
                 <div className="videocard__thumbnail">
-
+                    <img className="thumbnail__image" src="" alt=""></img>
                 </div>
             </Link>
 
