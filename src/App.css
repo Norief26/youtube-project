@@ -8,6 +8,7 @@
 .app__content {
     display: flex;
     height: inherit;
+    padding-top: 56px;
     width: 100%;
 }
 

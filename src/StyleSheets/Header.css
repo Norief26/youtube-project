@@ -25,6 +25,10 @@
     margin-right: 5px;
 }
 
+.header__left > a {
+    padding-top: 4px;
+}
+
 .header__middle {
     display: flex;
     flex: 1;

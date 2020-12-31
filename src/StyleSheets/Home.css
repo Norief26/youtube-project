@@ -1,6 +1,5 @@
 .Home {
     display: flex;
     max-width: 2256px;
-    padding-top: 56px;
     flex-wrap: wrap;
 }
