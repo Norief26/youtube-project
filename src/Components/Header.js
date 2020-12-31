@@ -18,7 +18,8 @@ function Header() {
     const [search, setSearch] = useState("")
     const [searchActive, setSearchActive] = useState(false)
     const location = useLocation()
-    const mediaQuery = useMediaQuery({ query: '(max-width: 657px)' })
+    const searchMediaQuery = useMediaQuery({ query: '(max-width: 657px)' })
+    const sideNavMaxMediaQuery = useMediaQuery({ query: '(max-width: 1313px)' })
 
     const handleSearch = (e) => {
         e.preventDefault();
@@ -28,7 +29,7 @@ function Header() {
     const renderLeft = () => {
         return (
             <div className="header__left">
-                <ButtonBase centerRipple={true} onClick={location.pathname === '/watch' ? () => {dispatch(toggleModalNav())} : () => {dispatch(toggleSideNav())}}>
+                <ButtonBase centerRipple={true} onClick={(location.pathname === '/watch' || sideNavMaxMediaQuery) ? () => {dispatch(toggleModalNav())} : () => {dispatch(toggleSideNav())}}>
                     <MenuIcon/>
                 </ButtonBase>
 
@@ -42,7 +43,7 @@ function Header() {
     const renderMiddle = () => {
         return (
             <div className="header__middle">
-                <div className={mediaQuery ? "middle__visible" : "middle__hidden"} onClick={() => setSearchActive(false)}>
+                <div className={searchMediaQuery ? "middle__visible" : "middle__hidden"} onClick={() => setSearchActive(false)}>
                     <ButtonBase centerRipple={true}>
                         <ArrowBackIcon/>
                     </ButtonBase>
@@ -61,7 +62,7 @@ function Header() {
     const renderRight = () => {
         return (
             <div className="header__right">
-                <div className={mediaQuery ? "right__visible" : "right__hidden"} onClick={() => setSearchActive(true)}>
+                <div className={searchMediaQuery ? "right__visible" : "right__hidden"} onClick={() => setSearchActive(true)}>
                     <SearchIcon/>
                 </div>
 
@@ -87,9 +88,9 @@ function Header() {
 
     return (
         <div className="header">
-            {(!searchActive || !mediaQuery) && renderLeft()}
-            {(searchActive || !mediaQuery) && renderMiddle()}
-            {(!searchActive || !mediaQuery) && renderRight()}
+            {(!searchActive || !searchMediaQuery) && renderLeft()}
+            {(searchActive || !searchMediaQuery) && renderMiddle()}
+            {(!searchActive || !searchMediaQuery) && renderRight()}
         </div>
     )
 }

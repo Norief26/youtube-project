@@ -1,9 +1,13 @@
 .sideNav_maximized {
     display: flex;
     flex-direction: column;
-    background-color: #202020;
+    position: sticky;
+    top: 0;
+    left: 0;
+    /* height: calc(100% - 56px); */
     min-width: 240px;
     max-width: 240px;
+    background-color: #202020;
     overflow-y: hidden;
 }
 

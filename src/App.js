@@ -1,21 +1,26 @@
 import React from 'react';
 import { useSelector } from 'react-redux'
+import { useMediaQuery } from 'react-responsive';
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom"
 import { selectSideNav } from './Redux/preferencesSlice'
 import Header from "./Components/Header"
 import Home from "./Components/Home"
 import SideNavMinimized from "./Components/SideNav_Minimized"
 import SideNavMaximized from "./Components/SideNav_Maximized"
+import SideNavModal from './Components/SideNav_Modal'
 import Watch from "./Components/Watch"
 import './App.css';
 
 function App() {
     const sideNav = useSelector(selectSideNav)
+    const sideNavMinMediaQuery = useMediaQuery({ query: '(max-width: 792px)' })
+    const sideNavMaxMediaQuery = useMediaQuery({ query: '(max-width: 1313px)' })
 
     return (
         <Router>
             <div className="App">
                 <Header/>
+                <SideNavModal/>
                 <div className="app__content">
 
                     {
@@ -28,7 +33,7 @@ function App() {
                         <Route path="/watch">
                             <Watch/>
                         </Route>
-                        <Route path="/" component={sideNav ? SideNavMinimized : SideNavMaximized}/>
+                        <Route path="/" component={(!sideNav && !sideNavMaxMediaQuery) ? SideNavMaximized : (!sideNavMinMediaQuery ? SideNavMinimized : "")}/>
                     </Switch>
 
                     {

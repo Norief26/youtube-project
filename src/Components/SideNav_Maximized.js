@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { useLocation } from "react-router-dom"
+import { ButtonBase } from '@material-ui/core'
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 import AddIcon from '@material-ui/icons/Add';
 import EmojiObjectsIcon from '@material-ui/icons/EmojiObjects';
@@ -9,6 +10,7 @@ import HistoryIcon from '@material-ui/icons/History';
 import HomeIcon from '@material-ui/icons/Home';
 import HowToRegIcon from '@material-ui/icons/HowToReg';
 import LiveTvIcon from '@material-ui/icons/LiveTv';
+import MenuIcon from '@material-ui/icons/Menu';
 import MusicNoteIcon from '@material-ui/icons/MusicNote';
 import PanoramaIcon from '@material-ui/icons/Panorama';
 import ReceiptIcon from '@material-ui/icons/Receipt';
@@ -35,7 +37,7 @@ function SideNav_Maximized() {
     }, [location])
 
     return (
-        <div className="sideNav_maximized">
+        <div className="sideNav_maximized">            
             <div className="sideNav__section">
                 <SideNavRow Icon={HomeIcon} title={"Home"} linkPath={"/"} selected={pathURL === "/"} maximized={true}/>
                 <SideNavRow Icon={WhatshotIcon} title={"Trending"} linkPath={"/feed/trending"} selected={pathURL === "/feed/trending"} maximized={true}/>

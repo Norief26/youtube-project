@@ -7,9 +7,9 @@
 
 .app__content {
     display: flex;
-    height: inherit;
+    height: calc(100% - 56px);
     padding-top: 56px;
-    width: 100%;
+    /* width: 100%; */
 }
 
 #root {
