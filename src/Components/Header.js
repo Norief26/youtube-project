@@ -1,12 +1,15 @@
 import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { Link, useLocation } from "react-router-dom";
 import { useMediaQuery } from 'react-responsive';
+import { auth, provider } from './../Firebase/firebase'
 import { ButtonBase } from '@material-ui/core'
+import { selectUser } from './../Redux/userSlice'
 import { toggleModalNav, toggleSideNav } from './../Redux/preferencesSlice'
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 import AppsIcon from '@material-ui/icons/Apps';
 import ArrowBackIcon from '@material-ui/icons/ArrowBack';
+import Avatar from '@material-ui/core/Avatar';
 import MenuIcon from '@material-ui/icons/Menu';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
 import SearchIcon from '@material-ui/icons/Search';
@@ -15,15 +18,22 @@ import "./../StyleSheets/Header.css"
 
 function Header() {
     const dispatch = useDispatch()
+    const location = useLocation()
     const [search, setSearch] = useState("")
     const [searchActive, setSearchActive] = useState(false)
-    const location = useLocation()
     const searchMediaQuery = useMediaQuery({ query: '(max-width: 657px)' })
     const sideNavMaxMediaQuery = useMediaQuery({ query: '(max-width: 1313px)' })
+    const user = useSelector(selectUser)
 
     const handleSearch = (e) => {
         e.preventDefault();
         console.log("Search Button Clicked")
+    }
+
+    const handleSignIn = () => {
+        auth.signInWithRedirect(provider).catch((error) => {
+            console.log(error)
+        });
     }
 
     const renderLeft = () => {
@@ -78,10 +88,14 @@ function Header() {
                     </ButtonBase>
                 </div>
                 
-                <div className='right__signin'>
-                    <AccountCircleIcon/>
-                    <span>SIGN IN</span>
-                </div>
+                { user ?
+                    <Avatar src={user.photoURL} alt={user.displayName}/>
+                :
+                    <div className='right__signin' onClick={handleSignIn}>
+                        <AccountCircleIcon/>
+                        <span>SIGN IN</span>
+                    </div>
+                }
             </div>
         )
     }

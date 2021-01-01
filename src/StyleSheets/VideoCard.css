@@ -1,10 +1,6 @@
 .VideoCard {
     display: flex;
     flex-direction: column;
-    /* height: 265px; */
-    /* width: 260px; */
-    /* padding-top: 20px;
-    padding-left: 14px; */
 }
 
 .videocard__thumbnail {
