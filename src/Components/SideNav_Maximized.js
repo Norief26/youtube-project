@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react'
+import { useSelector } from 'react-redux';
 import { useLocation } from "react-router-dom"
+import { selectUser } from './../Redux/userSlice'
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 import AddIcon from '@material-ui/icons/Add';
 import EmojiObjectsIcon from '@material-ui/icons/EmojiObjects';
@@ -29,6 +31,7 @@ import "./../StyleSheets/SideNav_Maximized.css"
 function SideNav_Maximized() {
     const [pathURL, setPathURL] = useState(window.location.pathname)
     const location = useLocation()
+    const user = useSelector(selectUser)
 
     useEffect(() => {
         setPathURL(location.pathname)
@@ -47,14 +50,17 @@ function SideNav_Maximized() {
                 <SideNavRow Icon={HistoryIcon} title={"History"} linkPath={"/feed/history"} selected={pathURL === "/feed/history"} maximized={true}/>
             </div>
 
-
-            <div className="sideNav__section">
-                <p className="signin__text">Sign in to like videos, comment, and subscribe.</p>
-                <div className='signin__button'>
-                    <AccountCircleIcon/>
-                    <span>SIGN IN</span>
-                </div>
-            </div>
+            {
+                !user && (
+                    <div className="sideNav__section">
+                        <p className="signin__text">Sign in to like videos, comment, and subscribe.</p>
+                        <div className='signin__button'>
+                            <AccountCircleIcon/>
+                            <span>SIGN IN</span>
+                        </div>
+                    </div>
+                )
+            }
 
             <div className="sideNav__section">
                 <span className='section__header'>BEST OF YOUTUBE</span>

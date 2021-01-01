@@ -152,3 +152,8 @@
 .MuiTouchRipple-rippleVisible {
     color: #acacac;
 }
+
+.MuiAvatar-root, .MuiAvatar-img {
+    max-height: 32px;
+    max-width: 32px;
+}
