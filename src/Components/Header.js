@@ -12,6 +12,7 @@ import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 import Avatar from '@material-ui/core/Avatar';
 import MenuIcon from '@material-ui/icons/Menu';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
+import NotificationsIcon from '@material-ui/icons/Notifications';
 import SearchIcon from '@material-ui/icons/Search';
 import VideoCallIcon from '@material-ui/icons/VideoCall';
 import "./../StyleSheets/Header.css"
@@ -36,12 +37,23 @@ function Header() {
         });
     }
 
+    function HeaderButton({ Icon, onClick, menu }) {
+        const [menuOpen, setMenu] = useState(false)
+
+        return (
+            <div className="headerButton" onClick={onClick}>
+                <ButtonBase centerRipple={true}>
+                    <Icon/>
+                </ButtonBase>
+                {menuOpen && menu}
+            </div>
+        )
+    }
+
     function HeaderLeft() {
         return (
             <div className="headerLeft">
-                <ButtonBase centerRipple={true} onClick={(location.pathname === '/watch' || sideNavMaxMediaQuery) ? () => {dispatch(toggleModalNav())} : () => {dispatch(toggleSideNav())}}>
-                    <MenuIcon/>
-                </ButtonBase>
+                <HeaderButton Icon={MenuIcon} onClick={(location.pathname === '/watch' || sideNavMaxMediaQuery) ? () => {dispatch(toggleModalNav())} : () => {dispatch(toggleSideNav())}}/>
 
                 <Link to='/'>
                         <img className="logo" src="https://i.ibb.co/QHNKTmP/Untitled.png" alt=""></img>
@@ -53,11 +65,7 @@ function Header() {
     function HeaderMiddle() {
         return (
             <div className="headerMiddle">
-                <div className={searchMediaQuery ? "headerMiddle__visible" : "headerMiddle__hidden"} onClick={() => setSearchActive(false)}>
-                    <ButtonBase centerRipple={true}>
-                        <ArrowBackIcon/>
-                    </ButtonBase>
-                </div>
+                {searchMediaQuery && <HeaderButton Icon={ArrowBackIcon} onClick={() => setSearchActive(false)}/>}
 
                 <form className="headerMiddle__form" onSubmit={handleSearch}>
                     <input className="headerMiddle__input" type="text" placeholder="Search" value={search} onChange={(e) => setSearch(e.target.value)}></input>
@@ -70,22 +78,20 @@ function Header() {
     }
 
     function HeaderRight() {
+        const [displayAccountMenu, setAccountMenu] = useState(false)
+
+        function AccountMenu() {
+            
+        }
+
         return (
             <div className="headerRight">
-                <div className={searchMediaQuery ? "headerRight__visible" : "headerRight__hidden"} onClick={() => setSearchActive(true)}>
-                    <SearchIcon/>
-                </div>
+                {searchMediaQuery && <HeaderButton Icon={SearchIcon} onClick={() => setSearchActive(true)}/>}
 
                 <div className="headerRight__icons">
-                    <ButtonBase centerRipple={true}>
-                        <AppsIcon/>
-                    </ButtonBase>
-                    <ButtonBase centerRipple={true}>
-                        <VideoCallIcon/>
-                    </ButtonBase>
-                    <ButtonBase centerRipple={true}>
-                        <MoreVertIcon/>
-                    </ButtonBase>
+                    <HeaderButton Icon={VideoCallIcon}/>
+                    <HeaderButton Icon={AppsIcon}/>
+                    { user ? <HeaderButton Icon={NotificationsIcon}/> : <HeaderButton Icon={MoreVertIcon}/> }
                 </div>
                 
                 { user ?

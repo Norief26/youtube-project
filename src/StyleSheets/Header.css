@@ -94,6 +94,7 @@
 
 .headerRight__icons {
     display: flex;
+    padding-right: 10px;
 }
 
 .headerRight__icons > .MuiSvgIcon-root {
@@ -117,19 +118,6 @@
 .headerRight__signin > .MuiSvgIcon-root {
     color: #3B9AEB !important;
     padding-right: 4px;
-}
-
-.headerRight__visible {
-    display: flex;
-}
-
-.headerRight__visible > .MuiSvgIcon-root {
-    padding: 6px;
-    margin: 4px;
-}
-
-.headerRight__hidden  {
-    display: none;
 }
 
 .logo {

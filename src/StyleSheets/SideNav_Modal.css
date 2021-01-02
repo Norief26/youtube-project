@@ -38,3 +38,7 @@
     padding-right: 11px;
     color: #ffffff;
 }
+
+.ReactModal__Content > .sideNav_maximized {
+    height: calc(100% - 56px);
+}

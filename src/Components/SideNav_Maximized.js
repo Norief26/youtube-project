@@ -16,12 +16,14 @@ import MusicNoteIcon from '@material-ui/icons/MusicNote';
 import PanoramaIcon from '@material-ui/icons/Panorama';
 import ReceiptIcon from '@material-ui/icons/Receipt';
 import ReportProblemIcon from '@material-ui/icons/ReportProblem';
+import ScheduleIcon from '@material-ui/icons/Schedule';
 import SettingsIcon from '@material-ui/icons/Settings';
 import ShopIcon from '@material-ui/icons/Shop';
 import SportsEsportsIcon from '@material-ui/icons/SportsEsports';
 import SportsSoccerIcon from '@material-ui/icons/SportsSoccer';
 import SubscriptionsIcon from '@material-ui/icons/Subscriptions';
 import TheatersIcon from '@material-ui/icons/Theaters';
+import ThumbUpIcon from '@material-ui/icons/ThumbUp';
 import VideoLibraryIcon from '@material-ui/icons/VideoLibrary';
 import WhatshotIcon from '@material-ui/icons/Whatshot';
 import WifiIcon from '@material-ui/icons/Wifi';
@@ -60,6 +62,8 @@ function SideNav_Maximized() {
             <div className="sideNav__section">
                 <SideNavRow Icon={VideoLibraryIcon} title={"Library"} linkPath={"/feed/library"} selected={pathURL === "/feed/library"}/>
                 <SideNavRow Icon={HistoryIcon} title={"History"} linkPath={"/feed/history"} selected={pathURL === "/feed/history"}/>
+                {user && <SideNavRow Icon={ScheduleIcon} title={"Watch Later"} linkPath={"/playlist/watchlater"}/>}
+                {user && <SideNavRow Icon={ThumbUpIcon} title={"Liked videos"} linkPath={"/playlist/liked"}/>}
             </div>
 
             {
@@ -75,27 +79,34 @@ function SideNav_Maximized() {
             }
 
             <div className="sideNav__section">
-                <span className='section__header'>BEST OF YOUTUBE</span>
+                <span className='section__header'>{user ? 'SUBSCRIPTIONS' : 'BEST OF YOUTUBE'}</span>
                 <SideNavRow Icon={MusicNoteIcon} title={"Music"} linkPath={"/channel/music"} selected={pathURL === "/channel/music"} outline={true}/>
                 <SideNavRow Icon={SportsSoccerIcon} title={"Sports"} linkPath={"/channel/sports"} selected={pathURL === "/channel/sports"} outline={true}/>
                 <SideNavRow Icon={SportsEsportsIcon} title={"Gaming"} linkPath={"/channel/gaming"} selected={pathURL === "/channel/gaming"} outline={true}/>
                 <SideNavRow Icon={TheatersIcon} title={"Movies & Shows"} linkPath={"/channel/movies"} selected={pathURL === "/channel/movies"} outline={true}/>
-                <SideNavRow Icon={ReceiptIcon} title={"News"} linkPath={"/channel/news"} selected={pathURL === "/channel/news"} outline={true}/>
-                <SideNavRow Icon={LiveTvIcon} title={"Live"} linkPath={"/channel/live"} selected={pathURL === "/channel/live"} outline={true}/>
-                <SideNavRow Icon={HowToRegIcon} title={"Fashion & Beauty"} linkPath={"/channel/fashion"} selected={pathURL === "/channel/fashion"} outline={true}/>
-                <SideNavRow Icon={EmojiObjectsIcon} title={"Learning"} linkPath={"/channel/learning"} selected={pathURL === "/channel/learning"} outline={true}/>
-                <SideNavRow Icon={ShopIcon} title={"Spotlight"} linkPath={"/channel/spotlight"} selected={pathURL === "/channel/spotlight"} outline={true}/>
-                <SideNavRow Icon={PanoramaIcon} title={"360\u00B0 Video"} linkPath={"/channel/360video"} selected={pathURL === "/channel/360video"} outline={true}/>
+                {!user && <SideNavRow Icon={ReceiptIcon} title={"News"} linkPath={"/channel/news"} selected={pathURL === "/channel/news"} outline={true}/>}
+                {!user && <SideNavRow Icon={LiveTvIcon} title={"Live"} linkPath={"/channel/live"} selected={pathURL === "/channel/live"} outline={true}/>}
+                {!user && <SideNavRow Icon={HowToRegIcon} title={"Fashion & Beauty"} linkPath={"/channel/fashion"} selected={pathURL === "/channel/fashion"} outline={true}/>}
+                {!user && <SideNavRow Icon={EmojiObjectsIcon} title={"Learning"} linkPath={"/channel/learning"} selected={pathURL === "/channel/learning"} outline={true}/>}
+                {!user && <SideNavRow Icon={ShopIcon} title={"Spotlight"} linkPath={"/channel/spotlight"} selected={pathURL === "/channel/spotlight"} outline={true}/>}
+                {!user && <SideNavRow Icon={PanoramaIcon} title={"360\u00B0 Video"} linkPath={"/channel/360video"} selected={pathURL === "/channel/360video"} outline={true}/>}
             </div>
 
+            {
+            !user &&
             <div className="sideNav__section">
                 <SideNavRow Icon={AddIcon} title={"Browse channels"} linkPath={"/feed/browse"} selected={pathURL === "/feed/browse"} outline={true}/>
             </div>
+            }
 
             <div className="sideNav__section">
                 <span className='section__header'>MORE FROM YOUTUBE</span>
                 <SideNavRow Icon={YouTubeIcon} title={"Youtube Premium"} linkPath={"/premium"} selected={pathURL === "/premium"}/>
+                {user && <SideNavRow Icon={TheatersIcon} title={"Movies & Shows"} linkPath={"/feed/movies"} selected={pathURL === "/feed/movies"}/>}
+                {user && <SideNavRow Icon={SportsEsportsIcon} title={"Gaming"} linkPath={"/channel/gaming"} selected={pathURL === "/channel/gaming"}/>}
                 <SideNavRow Icon={WifiIcon} title={"Live"} linkPath={"/channel/live"} selected={pathURL === "/channel/live"}/>
+                {user && <SideNavRow Icon={HowToRegIcon} title={"Fashion & Beauty"} linkPath={"/channel/fashion"} selected={pathURL === "/channel/fashion"}/>}
+                {user && <SideNavRow Icon={EmojiObjectsIcon} title={"Learning"} linkPath={"/channel/learning"} selected={pathURL === "/channel/learning"}/>}
             </div>
 
             <div className="sideNav__section">
