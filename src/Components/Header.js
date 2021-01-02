@@ -36,9 +36,9 @@ function Header() {
         });
     }
 
-    const renderLeft = () => {
+    function HeaderLeft() {
         return (
-            <div className="header__left">
+            <div className="headerLeft">
                 <ButtonBase centerRipple={true} onClick={(location.pathname === '/watch' || sideNavMaxMediaQuery) ? () => {dispatch(toggleModalNav())} : () => {dispatch(toggleSideNav())}}>
                     <MenuIcon/>
                 </ButtonBase>
@@ -50,33 +50,33 @@ function Header() {
         )
     }
 
-    const renderMiddle = () => {
+    function HeaderMiddle() {
         return (
-            <div className="header__middle">
-                <div className={searchMediaQuery ? "middle__visible" : "middle__hidden"} onClick={() => setSearchActive(false)}>
+            <div className="headerMiddle">
+                <div className={searchMediaQuery ? "headerMiddle__visible" : "headerMiddle__hidden"} onClick={() => setSearchActive(false)}>
                     <ButtonBase centerRipple={true}>
                         <ArrowBackIcon/>
                     </ButtonBase>
                 </div>
 
-                <form className="middle__form" onSubmit={handleSearch}>
-                    <input className="middle__input" type="text" placeholder="Search" value={search} onChange={(e) => setSearch(e.target.value)}></input>
-                    <button className="middle__button" type="submit">
-                        <SearchIcon type="submit"/>
+                <form className="headerMiddle__form" onSubmit={handleSearch}>
+                    <input className="headerMiddle__input" type="text" placeholder="Search" value={search} onChange={(e) => setSearch(e.target.value)}></input>
+                    <button className="headerMiddle__button" type="submit">
+                        <SearchIcon type="headerMiddle__submit"/>
                     </button>
                 </form>
             </div>
         )
     }
 
-    const renderRight = () => {
+    function HeaderRight() {
         return (
-            <div className="header__right">
-                <div className={searchMediaQuery ? "right__visible" : "right__hidden"} onClick={() => setSearchActive(true)}>
+            <div className="headerRight">
+                <div className={searchMediaQuery ? "headerRight__visible" : "headerRight__hidden"} onClick={() => setSearchActive(true)}>
                     <SearchIcon/>
                 </div>
 
-                <div className="right__icons">
+                <div className="headerRight__icons">
                     <ButtonBase centerRipple={true}>
                         <AppsIcon/>
                     </ButtonBase>
@@ -91,7 +91,7 @@ function Header() {
                 { user ?
                     <Avatar src={user.photoURL} alt={user.displayName}/>
                 :
-                    <div className='right__signin' onClick={handleSignIn}>
+                    <div className='headerRight__signin' onClick={handleSignIn}>
                         <AccountCircleIcon/>
                         <span>SIGN IN</span>
                     </div>
@@ -102,9 +102,9 @@ function Header() {
 
     return (
         <div className="header">
-            {(!searchActive || !searchMediaQuery) && renderLeft()}
-            {(searchActive || !searchMediaQuery) && renderMiddle()}
-            {(!searchActive || !searchMediaQuery) && renderRight()}
+            {(!searchActive || !searchMediaQuery) && <HeaderLeft/>}
+            {(searchActive || !searchMediaQuery) && <HeaderMiddle/>}
+            {(!searchActive || !searchMediaQuery) && <HeaderRight/>}
         </div>
     )
 }

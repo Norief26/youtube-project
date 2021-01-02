@@ -1,8 +1,7 @@
-import React, { useState, useEffect } from 'react'
-import { useLocation } from "react-router-dom"
+import React, { useState } from 'react'
+import { Link } from "react-router-dom";
 import HistoryIcon from '@material-ui/icons/History';
 import HomeIcon from '@material-ui/icons/Home';
-import SideNavRow from "./SideNav_Row"
 import SubscriptionsIcon from '@material-ui/icons/Subscriptions';
 import VideoLibraryIcon from '@material-ui/icons/VideoLibrary';
 import WhatshotIcon from '@material-ui/icons/Whatshot';
@@ -10,11 +9,17 @@ import "./../StyleSheets/SideNav_Minimized.css"
 
 function SideNav_Minimized() {
     const [pathURL, setPathURL] = useState(window.location.pathname)
-    const location = useLocation()
 
-    useEffect(() => {
-        setPathURL(location.pathname)
-    }, [location])
+    function SideNavRow({ Icon, title, linkPath, selected }) {
+        return (
+            <Link className="link" to={linkPath}>
+                <div className={`sideNav_minimizedRow ${selected && "selected"}`} onClick={() => {setPathURL(linkPath)}}>
+                    <Icon/>
+                    <span>{title}</span>
+                </div>
+            </Link>
+        )
+    }
 
     return (
         <div className='sideNav_minimized'>

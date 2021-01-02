@@ -30,10 +30,11 @@
     position: relative;
     z-index: 1;
     top: 0;
-    padding-left: 16px;
+    padding-left: 24px;
     height: 56px;
 }
 
 .modal__header > .MuiButtonBase-root {
-    padding-top: 16px;
+    padding-right: 11px;
+    color: #ffffff;
 }
