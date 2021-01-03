@@ -26,6 +26,47 @@ function Header() {
     const sideNavMaxMediaQuery = useMediaQuery({ query: '(max-width: 1313px)' })
     const user = useSelector(selectUser)
 
+    function HeaderSection(props) {
+        return (
+            <div className={props.className}>
+                {props.children}
+            </div>
+        )
+    }
+
+    function SearchBar() {
+        return(
+            <form className="header__searchForm" onSubmit={handleSearch}>
+                <input className="header__searchInput" type="text" placeholder="Search" value={search} onChange={(e) => setSearch(e.target.value)}></input>
+                <button className="header__searchButton" type="submit">
+                    <SearchIcon type="header__searchSubmit"/>
+                </button>
+            </form>
+        )
+    }
+
+    function SignIn() {
+        return (
+            <div className='header__signIn' onClick={handleSignIn}>
+                <AccountCircleIcon/>
+                <span>SIGN IN</span>
+            </div>
+        )
+    }
+
+    function HeaderButton(props) {
+        const [menuOpen, setMenu] = useState(false)
+
+        return (
+            <div className="header__button" onClick={() => {setMenu(!menuOpen)}}>
+                <ButtonBase centerRipple={true}>
+                    {props.children}
+                </ButtonBase>
+                {menuOpen && props.menu}
+            </div>
+        )
+    }
+
     const handleSearch = (e) => {
         e.preventDefault();
         console.log("Search Button Clicked")
@@ -37,80 +78,61 @@ function Header() {
         });
     }
 
-    function HeaderButton({ Icon, onClick, menu }) {
-        const [menuOpen, setMenu] = useState(false)
-
-        return (
-            <div className="headerButton" onClick={onClick}>
-                <ButtonBase centerRipple={true}>
-                    <Icon/>
+    return (
+        <div className="header">
+            {(!searchActive || !searchMediaQuery) &&
+            <HeaderSection className={"header__left"}>
+                <ButtonBase centerRipple={true} onClick={(location.pathname === '/watch' || sideNavMaxMediaQuery) ? () => {dispatch(toggleModalNav())} : () => {dispatch(toggleSideNav())}}>
+                    <MenuIcon/>
                 </ButtonBase>
-                {menuOpen && menu}
-            </div>
-        )
-    }
-
-    function HeaderLeft() {
-        return (
-            <div className="headerLeft">
-                <HeaderButton Icon={MenuIcon} onClick={(location.pathname === '/watch' || sideNavMaxMediaQuery) ? () => {dispatch(toggleModalNav())} : () => {dispatch(toggleSideNav())}}/>
-
                 <Link to='/'>
                         <img className="logo" src="https://i.ibb.co/QHNKTmP/Untitled.png" alt=""></img>
                 </Link>
-            </div>
-        )
-    }
+            </HeaderSection>
+            }
 
-    function HeaderMiddle() {
-        return (
-            <div className="headerMiddle">
-                {searchMediaQuery && <HeaderButton Icon={ArrowBackIcon} onClick={() => setSearchActive(false)}/>}
-
-                <form className="headerMiddle__form" onSubmit={handleSearch}>
-                    <input className="headerMiddle__input" type="text" placeholder="Search" value={search} onChange={(e) => setSearch(e.target.value)}></input>
-                    <button className="headerMiddle__button" type="submit">
-                        <SearchIcon type="headerMiddle__submit"/>
-                    </button>
-                </form>
-            </div>
-        )
-    }
-
-    function HeaderRight() {
-        const [displayAccountMenu, setAccountMenu] = useState(false)
-
-        function AccountMenu() {
-            
-        }
-
-        return (
-            <div className="headerRight">
-                {searchMediaQuery && <HeaderButton Icon={SearchIcon} onClick={() => setSearchActive(true)}/>}
-
-                <div className="headerRight__icons">
-                    <HeaderButton Icon={VideoCallIcon}/>
-                    <HeaderButton Icon={AppsIcon}/>
-                    { user ? <HeaderButton Icon={NotificationsIcon}/> : <HeaderButton Icon={MoreVertIcon}/> }
-                </div>
-                
-                { user ?
-                    <Avatar src={user.photoURL} alt={user.displayName}/>
-                :
-                    <div className='headerRight__signin' onClick={handleSignIn}>
-                        <AccountCircleIcon/>
-                        <span>SIGN IN</span>
-                    </div>
+            {(searchActive || !searchMediaQuery) &&
+            <HeaderSection className={"header__middle"}>
+                {searchMediaQuery &&
+                <ButtonBase onClick={() => setSearchActive(false)}>
+                    <ArrowBackIcon/>
+                </ButtonBase>
                 }
-            </div>
-        )
-    }
+                <SearchBar/>
+            </HeaderSection>
+            }
 
-    return (
-        <div className="header">
-            {(!searchActive || !searchMediaQuery) && <HeaderLeft/>}
-            {(searchActive || !searchMediaQuery) && <HeaderMiddle/>}
-            {(!searchActive || !searchMediaQuery) && <HeaderRight/>}
+            {(!searchActive || !searchMediaQuery) &&
+            <HeaderSection className={"header__right"}>
+                {searchMediaQuery &&
+                <ButtonBase onClick={() => setSearchActive(true)}>
+                    <SearchIcon/>
+                </ButtonBase>
+                }
+                <HeaderButton>
+                    <VideoCallIcon/>
+                </HeaderButton>
+                <HeaderButton>
+                    <AppsIcon/>
+                </HeaderButton>
+                {user ? 
+                <HeaderButton>
+                    <NotificationsIcon/>
+                </HeaderButton>
+                :
+                <HeaderButton>
+                    <MoreVertIcon/>
+                </HeaderButton>
+                }
+                {user ?
+                <HeaderButton>
+                    <Avatar src={user.photoURL} alt={user.displayName}/>
+                </HeaderButton>
+                :
+                <SignIn/>
+                }
+            </HeaderSection>
+            }
         </div>
     )
 }
