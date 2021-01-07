@@ -16,6 +16,7 @@
     height: 100vh;
 }
 
-.link {
+a {
     text-decoration: none;
+    outline: none;
 }

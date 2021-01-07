@@ -9,24 +9,11 @@
     justify-content: space-between;
 }
 
-.header > * {
-    cursor: pointer;
-}
-
 .header__left {
     display: flex;
     padding-left: 16px;
     align-items: center;
-    justify-content: left;
-}
-
-.header__left > .MuiSvgIcon-root {
-    padding: 6px;
-    margin-right: 5px;
-}
-
-.header__left > a {
-    padding-top: 4px;
+    justify-content: center;
 }
 
 .header__middle {
@@ -45,35 +32,41 @@
     height: 32px;
     width: 100%;
     background-color: #181818;
-    border-color: #323232;
-    border-style: solid;
     border-width: 1px 0px 1px 1px
 }
 
 .header__searchInput {
-    height: 26px;
+    height: 30px;
     width: 100%;
-    min-width: 100px;
     padding-left: 10px;
-    line-height: 24px;
     font-size: 16px;
-    font-weight: 400;
     font-family: 'Roboto','Noto',sans-serif;
     color: #FFFFFF;
     background-color: #181818;
-    border: none;
+    border: 1px solid #323232;
+}
+
+.header__searchInput:focus {
+    outline: none;
+    border: 1px solid #1c62b9;
 }
 
 .header__searchButton {
-    height: inherit;
+    height: 34px;
     width: 64px;
-    cursor: inherit;
+    cursor: pointer;
     background-color: #323232;
     border: none;
+    outline: none;
 }
 
 .header__searchButton > .MuiSvgIcon-root {
-    color: #858585;
+    height: 20px;
+    color: #858585 !important;
+}
+
+.header__searchButton:hover > .MuiSvgIcon-root {
+    color: #adadad !important;
 }
 
 .header__right {
@@ -103,13 +96,23 @@
 
 .logo {
     height: inherit;
+    padding-top: 4px;
 }
 
 .header .MuiSvgIcon-root {
     color: #FFFFFF;
 }
 
-.header .MuiButtonBase-root {
+.header__right > .header__button > .button__icon > .MuiButtonBase-root {
+    min-height: 40px !important;
+    min-width: 40px !important;
+    max-height: 40px !important;
+    max-width: 40px !important;
+    border-radius: 50px !important;
+    margin-right: 3px !important;
+}
+
+.header__left > .MuiButtonBase-root {
     min-height: 40px !important;
     min-width: 40px !important;
     max-height: 40px !important;
@@ -125,4 +128,139 @@
 .header .MuiAvatar-root, .MuiAvatar-img {
     max-height: 32px;
     max-width: 32px;
+}
+
+.header__accountMenu{
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    right: 10px;
+    width: 298px;
+    color: #ffffff;
+    background-color: rgb(32, 32, 32, 0.95);
+    border: 1px solid #383838;
+    border-top: none;
+}
+
+.accountMenu__header {
+    display: flex;
+    padding: 16px;
+}
+
+.accountMenu__userInfo {
+    display: flex;
+    flex-direction: column;
+    padding-left: 14px;
+}
+
+.accountMenu__section{
+    display: flex;
+    flex-direction: column;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    color: #ffffff;
+    border-top: 1px solid #383838;
+}
+
+.accountMenuRow {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 15px;
+    padding: 8px 8px 8px 16px;
+}
+
+.accountMenuRow:hover {
+    background-color: #303030;
+}
+
+.accountMenu__row {
+    display: flex;
+    align-items: center;
+}
+
+.accountMenu__section .MuiSvgIcon-root {
+    padding-right: 10px;
+    color: #ffffff;
+}
+
+.userInfo__displayName {
+    font-weight: 600;
+}
+
+.userInfo__email {
+    font-size: 14px;
+}
+
+.header__switchAccountMenu { 
+    z-index: 1;
+}
+
+.switchAccountMenu__header, .restrictedMenu__header, .appearanceMenu__header {
+    display: flex;
+    align-items: center;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    padding-left: 16px;
+}
+
+.switchAccountMenu__header, .restrictedMenu__header, .appearanceMenu__header > .MuiSvgIcon-root {
+    padding-right: 8px;
+}
+
+.appearanceMenu__header  > .MuiSvgIcon-root {
+    padding-right: 8px;
+}
+
+.restrictedMenu__header > .MuiSvgIcon-root {
+    padding-right: 8px;
+}
+
+.switchAccountMenu__userSection {
+    display: flex;
+    padding-left: 16px;
+    padding-right: 16px;
+    padding-bottom: 8px;
+}
+
+.switchAccountMenu__userInfo {
+    display: flex;
+    flex-direction: column;
+    padding-left: 8px;
+    font-size: 12px;
+}
+
+.switchAccountMenu__userEmail {
+    padding-top: 8px;
+    padding-left: 16px !important;
+    padding-bottom: 12px;
+}
+
+.header__appearanceMenu span {
+    padding-top: 8px;
+    padding-bottom: 8px;
+}
+
+.appearanceMenu__sectionHeader {
+    font-size: 14px;
+    color: #8f8f8f !important;
+}
+
+.restrictedMenu__text {
+    padding-left: 16px !important;
+    padding-right: 16px !important;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    font-size: 14px;
+}
+
+.restrictedMenu__toggle {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 14px;
+    padding-top: 8px;
+    padding-left: 16px;
+    padding-right: 20px;
+    color: #8f8f8f !important;
 }
